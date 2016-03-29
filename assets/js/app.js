@@ -2,14 +2,14 @@
 
 /**
  * @ngdoc overview
- * @name yapp
+ * @name myApp
  * @description
- * # yapp
+ * # myApp
  *
  * Main module of the application.
  */
 angular
-  .module('yapp', ['ui.router','ngAnimate'])
+  .module('myApp', ['ui.router','ngAnimate'])
   .config(function ($stateProvider, $urlRouterProvider) {
 
     $urlRouterProvider.when('/dashboard', '/dashboard/overview');
