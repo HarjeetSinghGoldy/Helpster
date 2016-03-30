@@ -9,7 +9,7 @@
  * Main module of the application.
  */
 angular
-  .module('myApp', ['ui.router','ngAnimate'])
+  .module('myApp', ['ui.router','ngAnimate','toastr'])
   .config(function ($stateProvider, $urlRouterProvider) {
 
     $urlRouterProvider.when('/dashboard', '/dashboard/overview');
