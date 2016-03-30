@@ -1,7 +1,7 @@
-/* Have to set height explicity on ui-view 
+/* Have to set height explicity on ui-view
 to prevent collapsing during animation*/
 /*.well[ui-view]{
- height: 65px; 
+ height: 65px;
 }*/
 
 [ui-view] {
@@ -27,7 +27,7 @@ to prevent collapsing during animation*/
 }
 
 [ui-view].ng-enter {
-  opacity: 0;
+  opacity: 1;
   -webkit-transform:scale3d(0.94, 0.94, 0.94);
   -moz-transform:scale3d(0.94, 0.94, 0.94);
   transform:scale3d(0.94, 0.94, 0.94);
@@ -41,14 +41,14 @@ to prevent collapsing during animation*/
 }
 
 [ui-view].ng-leave {
-  opacity: 1; 
+  opacity: 1;
   -webkit-transform:translate3d(0, 0, 0);
   -moz-transform:translate3d(0, 0, 0);
   transform:translate3d(0, 0, 0);
 }
 
 [ui-view].ng-leave-active {
-  opacity: 0;
+  opacity: 1;
   -webkit-transform:translate3d(0, 0, 0);
   -moz-transform:translate3d(0, 0, 0);
   transform:translate3d(0, 0, 0);
