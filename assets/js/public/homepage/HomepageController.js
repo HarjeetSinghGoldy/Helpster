@@ -19,7 +19,7 @@ angular.module('HomepageModule').controller('HomepageController', ['$scope', '$h
         // Refresh the page now that we've been logged in.
         toastr.success('Sign in successfully...', 'Success', {
           "closeButton": true,
-          "positionClass": "toast-bottom-right"
+          "positionClass": "toast-top-right"
         })
         //$location.path('user/Signup');
         window.location = '/';//this function take http from current page to nextpage
@@ -30,8 +30,6 @@ angular.module('HomepageModule').controller('HomepageController', ['$scope', '$h
         // Invalid username / password combination.
         if (sailsResponse.status === 400 || 404) {
           // $scope.loginForm.topLevelErrorMessage = 'Invalid email/password combination.';
-
-
           toastr.warning('Invalid email/password combination.', 'Error', {
 
             "closeButton": true,
@@ -45,8 +43,6 @@ angular.module('HomepageModule').controller('HomepageController', ['$scope', '$h
 
           });
           return;
-
-
         }
 
         toastr.error('An unexpected error occurred, please try again.', 'Error', {
@@ -71,6 +67,7 @@ angular.module('HomepageModule').controller('HomepageController', ['$scope', '$h
 
       })
       .finally(function eitherWay() {
+
         $scope.loginForm.loading = false;
       });
   };
