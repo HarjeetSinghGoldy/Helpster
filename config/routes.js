@@ -32,10 +32,16 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  '/': {
-    view: 'homepage'
-  },
+  //'/': {
+  //  //view: 'homepage'
+  //  view: 'user/homepage'
+  //},
+
+  'GET /'       : 'PageController.showHomePage',
+
   'PUT /login'  : 'UserController.login',
+  'GET /signup' : 'PageController.showSignup',
+  'POST /signup': 'UserController.signup'
 
   /***************************************************************************
   *                                                                          *

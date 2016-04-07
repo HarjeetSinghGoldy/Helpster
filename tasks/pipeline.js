@@ -32,12 +32,17 @@ var jsFilesToInject = [
   'js/dependencies/**/*.js',
 
 
+  'js/public/homepage/HomepageModule.js',
+  "js/public/signup/SingupModule.js",
 
+  'js/public/homepage/HomepageController.js',
   // All of the rest of your client-side js files
   // will be injected here in no particular order.
   'js/**/*.js',
+
   'js/controllers/login.js',
   'js/controllers/dashboard.js',
+
 
 
   // Use the "exclude" operator to ignore files
