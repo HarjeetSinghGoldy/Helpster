@@ -13,10 +13,10 @@
   attributes: {
     helpsterId :{
       type:'integer',
-      required: 'true',
-      defaultsTo: 1,
+      //required: 'true',
+      //defaultsTo: 1,
       autoIncrement: true,
-      primaryKey: true,
+      //unique: true,
       columnName: 'helpsterId'
 
     },
@@ -77,7 +77,7 @@
     dob:{
       type:'date',
       date:true,
-      required: true,
+      required: false,
       columnName:'dob'
     },
     //toJSON: function(){
