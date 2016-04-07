@@ -1,7 +1,70 @@
-<h1>Dashboard</h1>
-<%= me.id%>
-<%= me.firstname%>
-<%= me.lastname%>
-<%= me.mobile%>
-<%= me.email%>
-<%= me.gender%>
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="Dashboard" content="">
+  <!--View port for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>Welcome to Dashboard<%= me.firstname %></title>
+  <!--STYLES-->
+  <link rel="stylesheet" href="/styles/angular-toastr.css">
+  <link rel="stylesheet" href="/styles/bootstrap.css">
+  <link rel="stylesheet" href="/styles/importer.css">
+  <!--STYLES END-->
+</head>
+<body ng-app="DashboardModule">
+  <div ng-controller="DashboardController">
+    <!--<h1 xmlns="http://www.w3.org/1999/html">Dashboard</h1>-->
+    <!--<h1>{{test.demo}}</h1>-->
+
+    <!--<%= me.id %>-->
+    <!--<%= me.firstname %>-->
+    <!--<%= me.lastname %>-->
+    <!--<%= me.mobile %>-->
+    <!--<%= me.email %>-->
+    <!--<%= me.gender %>-->
+    <div class="dashboard-page">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-3 col-md-2 sidebar">
+
+            <div class="text-center">
+              <h2 class="brand"><%= me.firstname%><small><%= me.lastname%></small></h2>
+              <img src="images/flat-avatar.png" class="user-avatar" /><br />
+              <a href="/logout" class="btn btn-white btn-outline btn-rounded btn-sm">Logout</a>
+            </div>
+
+            <ul class="nav nav-sidebar">
+              <li ng-class="{active: $state.includes('overview')}"><a ui-sref="overview">Overview <span class="sr-only">(current)</span></a></li>
+              <li ng-class="{active: $state.includes('reports')}"><a ui-sref="reports">Reports</a></li>
+            </ul>
+
+          </div>
+          <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ui-view>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+<!--SCRIPTS-->
+<script src="/js/dependencies/sails.io.js"></script>
+<script src="/js/dependencies/angular.js"></script>
+<script src="/js/dependencies/angular-animate.js"></script>
+<script src="/js/dependencies/angular-mocks.js"></script>
+<script src="/js/dependencies/angular-toastr.js"></script>
+<script src="/js/dependencies/angular-ui-router.js"></script>
+<script src="/js/dependencies/compareTo.module.js"></script>
+<script src="/js/dependencies/toastr.js"></script>
+<script src="/js/public/homepage/HomepageModule.js"></script>
+<script src="/js/public/signup/SingupModule.js"></script>
+<script src="/js/private/DashboardModule.js"></script>
+<script src="/js/public/homepage/HomepageController.js"></script>
+<script src="/js/app.js"></script>
+<script src="/js/controllers/dashboard.js"></script>
+<script src="/js/controllers/login.js"></script>
+<script src="/js/private/DashboardConroller.js"></script>
+<script src="/js/public/signup/SignupController.js"></script>
+<!--SCRIPTS END-->
+</body>
+</html>
