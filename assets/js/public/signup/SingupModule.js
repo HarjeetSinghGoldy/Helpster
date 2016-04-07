@@ -4,4 +4,4 @@
 /**
  * Created by harjeet on 31/3/16.
  */
-angular.module('SignupModule',['toastr','compareTo']);
+angular.module('SignupModule',['toastr','ngAnimate','compareTo']);
