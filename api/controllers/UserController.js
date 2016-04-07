@@ -16,6 +16,7 @@ module.exports = {
     User.findOne({
       email: req.param('email')
     }, function foundUser(err, user) {
+
       if (err)
         return res.negotiate(err);
       if (!user)
@@ -40,7 +41,11 @@ module.exports = {
         success: function () {
 
           // Store user id in the user session
+
+          console.log("usercontroller",user)
+
           req.session.me = user.id;
+          console.log(req.session.me);
 
           // All done- let the client know that everything worked.
           return res.ok();
@@ -48,7 +53,80 @@ module.exports = {
       });
     });
 
+  },
+  /**
+   * Sign up for a user account.
+   */
+  signup: function (req, res) {
+
+
+    var Passwords = require('machinepack-passwords');
+
+    // Encrypt a string using the BCrypt algorithm.
+    console.log(req.method)
+    console.log(req.param('email'))
+
+    Passwords.encryptPassword({
+      password: req.param('password'),
+      difficulty: 10,
+    }).exec({
+      // An unexpected error occurred.
+
+      error: function (err) {
+        return res.negotiate(err);
+      },
+      // OK.
+      success: function (encryptedPassword) {
+        require('machinepack-gravatar').getImageUrl({
+          emailAddress: req.param('email')
+        }).exec({
+          error: function (err) {
+            return res.negotiate(err);
+          },
+          success: function (gravatarUrl) {
+            // Create a User with the params sent from
+            // the sign-up form --> signup.ejs
+            User.create({
+              firstname: req.param('firstname'),
+              lastname: req.param('lastname'),
+              email: req.param('email'),
+              mobile: req.param('mobile'),
+              gender: req.param('gender'),
+              encryptedPassword: encryptedPassword,
+              lastLoggedIn: new Date(),
+              gravatarUrl: gravatarUrl
+            }, function userCreated(err, newUser) {
+              if (err) {
+
+                console.log("err: ", err);
+                console.log("err.invalidAttributes: ", err.invalidAttributes)
+
+                // If this is a uniqueness error about the email attribute,
+                // send back an easily parseable status code.
+                if (err.invalidAttributes && err.invalidAttributes.email && err.invalidAttributes.email[0]
+                  && err.invalidAttributes.email[0].rule === 'unique') {
+                  return res.emailAddressInUse();
+                }
+
+                // Otherwise, send back something reasonable as our error response.
+                return res.negotiate(err);
+              }
+
+              // Log user in
+              req.session.me = newUser.id;
+
+              // Send back the id of the new user
+              return res.json({
+                id: newUser.id
+
+              });
+            });
+          }
+        });
+      }
+    });
   }
+
 
 };
 
