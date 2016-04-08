@@ -29,6 +29,7 @@ angular.module('SignupModule').controller('SignupController',['$scope', '$http',
       .catch( function onError(sailsResponse){
         //handel unknow errors
         var emailAddressAlreadyInUse = sailsResponse.status == 409;
+        var mobileNumberAlreadyInUse = sailsResponse.status == 410;
 
         if (emailAddressAlreadyInUse) {
           toastr.warning("Email address is already in use, please use other", 'Error',
@@ -37,6 +38,13 @@ angular.module('SignupModule').controller('SignupController',['$scope', '$http',
               "positionClass": "toast-top-right"
             })
           return;
+        }
+
+        if(mobileNumberAlreadyInUse) {
+          toastr.warning("Mobile number is already in use, please use another number", "Error",{
+            "closeButton": true,
+            "positionClass": "toast-top-right"
+          })
         }
 
       })
