@@ -103,5 +103,18 @@ module.exports = {
       });
 
     });
+  },
+//GET method hit this action to get adn find user data using session
+  userProfile : function(req, res, next) {
+    User.findOne(req.session.me, function foundUser(err, user) {
+      if (err) return next(err);
+
+      if (!user) return next();
+      //Send the looged in user data in userData and notFound false to angular $http get request
+      return res.json({
+        notFound:false,
+        userData:user
+      });
+    });
   }
 }

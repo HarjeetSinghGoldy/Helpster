@@ -38,6 +38,7 @@ module.exports.routes = {
   //},
 
   'GET /'       : 'PageController.showHomePage',
+  'GET /userProfile' : 'PageController.userProfile',
 
   'PUT /login'  : 'UserController.login',
   'GET /signup' : 'PageController.showSignup',
