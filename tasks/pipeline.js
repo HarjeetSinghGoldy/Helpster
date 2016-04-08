@@ -33,8 +33,9 @@ var jsFilesToInject = [
 
 
   'js/public/homepage/HomepageModule.js',
-  "js/public/signup/SingupModule.js",
-  "/js/private/DashboardModule.js",
+  'js/public/signup/SingupModule.js',
+  'js/private/DashboardModule.js',
+  'js/private/DashboardRoute.js',
 
   'js/public/homepage/HomepageController.js',
   // All of the rest of your client-side js files
