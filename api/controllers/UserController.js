@@ -105,6 +105,13 @@ module.exports = {
                   return res.emailAddressInUse();
                 }
 
+                //If this is a uniqueness error about the mobile attribute,
+                //send back an easly parsable status code
+
+                if (err.invalidAttributes && err.invalidAttributes.mobile && err.invalidAttributes.mobile[0]
+                    && err.invalidAttributes.mobile[0].rule === 'unique'){
+                  return res.mobileNumberInUse();
+                }
                 // Otherwise, send back something reasonable as our error response.
                 return res.negotiate(err);
               }
