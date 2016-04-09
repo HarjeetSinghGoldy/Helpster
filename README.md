@@ -9,5 +9,6 @@ Technologies required:-
 2)Nodejs
 3)Sailsjs
 4)MongoDB
+5)HTML5
 
 
